@@ -1,0 +1,184 @@
+<!-- 输入框 -->
+<view class="search-bar" hover-class="none" hover-stop-propagation="false">
+    <view class="search-bar-inputBox" hover-class="none" hover-stop-propagation="false">
+        <icon class="search-bar-icon" type="search" size="14"></icon>
+        <input disabled class="search-bar-input" placeholder="请输入歌手或歌曲名" bindtap="clickSearchBar"/>
+    </view>
+</view>
+<!-- 个性推荐和主播电台header -->
+<view class="header" hover-class="none" hover-stop-propagation="false">
+    <view bind:tap="checkHeaderType" data-header-type='recommended' class="header-recommended" hover-class="none" hover-stop-propagation="false">
+        个性推荐
+        <view hidden="{{headerType=='station'}}" class="header-recommended-bottom" hover-class="none" hover-stop-propagation="false">
+            
+        </view>
+    </view>
+    <view bind:tap="checkHeaderType" data-header-type='station' class="header-station" hover-class="none" hover-stop-propagation="false">
+        主播电台
+        <view hidden="{{headerType=='recommended'}}" class="header-station-bottom" hover-class="none" hover-stop-propagation="false">
+            
+        </view>
+    </view>
+</view>
+
+<!-- 轮播图 -->
+<swiper class="swiper" indicator-dots="{{true}}" autoplay="{{true}}" circular="{{true}}">
+    <block wx:for="{{swiperList}}" wx:for-item="item" wx:for-index="index" wx:key="index">
+        <swiper-item bind:tap="goToPlay" data-id='{{item.targetId}}'>
+            <view class="swiper-item" hover-class="none" hover-stop-propagation="false">
+                <image class="swiper-item-image" src="{{item.imageUrl}}" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload=""></image>
+                <image class="swiper-item-background" src="{{item.imageUrl}}" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload=""></image>
+            </view>
+        </swiper-item>
+    </block>
+</swiper>
+
+<!-- 个性推荐 -->
+<view hidden="{{headerType=='station'}}" class="recommended" hover-class="none" hover-stop-propagation="false">
+    <!-- 四个导航 -->
+    <view class="recommended-fourNav" hover-class="none" hover-stop-propagation="false">
+        <view bind:tap="goToInfo" data-type='{{item.type}}' class="recommended-fourNav-item" wx:for="{{recommendedNavList}}" wx:for-item="item" wx:for-index="index" wx:key="index">
+            <view class="recommended-fourNav-item-icon" hover-class="none" hover-stop-propagation="false">
+                <image class="" src="{{item.src}}"></image>
+            </view>
+            {{item.name}}
+        </view>
+    </view>
+    <!-- 最新音乐 -->
+    <view class="newMusic six-bar" hover-class="none" hover-stop-propagation="false">
+        <view class="bar-title" hover-class="none" hover-stop-propagation="false">
+            
+            <view class="bar-title-text" hover-class="none" hover-stop-propagation="false">
+                最新音乐
+            </view>
+            <view bind:tap="goToInfo" data-type='newSongs' class="bar-title-more" hover-class="none" hover-stop-propagation="false">
+                更多>
+            </view>
+        </view>
+        <view class="six-bar-box" hover-class="none" hover-stop-propagation="false">
+            <view bind:tap="goToPlay" data-id='{{item.id}}' wx:for="{{homeNewMusicList}}" wx:for-item="item" wx:for-index="index" wx:key="index" class="six-bar-box-item" hover-class="none" hover-stop-propagation="false">
+                <image class="six-bar-box-item-image" src="{{item.song.album.picUrl}}" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+                    
+                </image>
+                <view class="six-bar-box-item-name ellipsisText">{{item.name}}</view>
+                <view class="six-bar-box-item-singer ellipsisText">{{item.song.artists[0].name}}</view>
+            </view>
+        </view>
+    </view>
+    <!-- 精选歌单 -->
+    <view class="choiceness six-bar" hover-class="none" hover-stop-propagation="false">
+        <view class="bar-title" hover-class="none" hover-stop-propagation="false">
+            <view class="bar-title-text" hover-class="none" hover-stop-propagation="false">
+                精选歌单
+            </view>
+            <view bind:tap="goToInfo" data-type='songOrder' class="bar-title-more" hover-class="none" hover-stop-propagation="false">
+                更多>
+            </view>
+        </view>
+        <view class="six-bar-box" hover-class="none" hover-stop-propagation="false">
+            <view bind:tap="goToSongOrder" data-data='{{item.id}}' wx:for="{{homeChoicenessList}}" wx:for-item="item" wx:for-index="index" wx:key="index" class="six-bar-box-item" hover-class="none" hover-stop-propagation="false">
+                <image class="six-bar-box-item-image" src="{{item.coverImgUrl}}" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+                    
+                </image>
+                <view class="six-bar-box-item-text ellipsisText">{{item.name}}</view>
+            </view>
+        </view>
+    </view>
+    <!-- 推荐MV -->
+    <view class="recommendedMV four-bar" hover-class="none" hover-stop-propagation="false">
+        <view class="bar-title" hover-class="none" hover-stop-propagation="false">
+            <view class="bar-title-text" hover-class="none" hover-stop-propagation="false">
+                推荐MV
+            </view>
+            <view bind:tap="goToInfo" data-type='MV' class="bar-title-more" hover-class="none" hover-stop-propagation="false">
+                更多>
+            </view>
+        </view>
+        <view class="four-bar-box" hover-class="none" hover-stop-propagation="false">
+            <view bind:tap="goToMV" data-id='{{item.id}}' wx:for="{{homeRecommendedMVList}}" wx:for-item="item" wx:for-index="index" wx:key="index" class="four-bar-box-item" hover-class="none" hover-stop-propagation="false">
+                <image class="four-bar-box-item-image" src="{{item.picUrl}}" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+                    
+                </image>
+                <view class="six-bar-box-item-name ellipsisText">{{item.name}}</view>
+                <view class="six-bar-box-item-singer ellipsisText">{{item.artistName}}</view>
+            </view>
+        </view>
+    </view>
+    <!-- 精选电台 -->
+    <view class="station six-bar" hover-class="none" hover-stop-propagation="false">
+        <view class="bar-title" hover-class="none" hover-stop-propagation="false">
+            
+            <view class="bar-title-text" hover-class="none" hover-stop-propagation="false">
+                精选电台
+            </view>
+            <view class="bar-title-more" hover-class="none" hover-stop-propagation="false">
+                更多>
+            </view>
+        </view>
+        <view class="six-bar-box" hover-class="none" hover-stop-propagation="false">
+            <view wx:for="{{homeStationList}}" wx:for-item="item" wx:for-index="index" wx:key="index" class="six-bar-box-item" hover-class="none" hover-stop-propagation="false">
+                <image class="six-bar-box-item-image" src="{{item.picUrl}}" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+                    
+                </image>
+                <view class="six-bar-box-item-text ellipsisText">{{item.name}}</view>
+            </view>
+        </view>
+    </view>
+    <!-- 最新专辑 -->
+    <view class="latestAlbum six-bar" hover-class="none" hover-stop-propagation="false">
+        <view class="bar-title" hover-class="none" hover-stop-propagation="false">
+            
+            <view class="bar-title-text" hover-class="none" hover-stop-propagation="false">
+                最新专辑
+            </view>
+            <view class="bar-title-more" hover-class="none" hover-stop-propagation="false">
+                更多>
+            </view>
+        </view>
+        <view class="six-bar-box" hover-class="none" hover-stop-propagation="false">
+            <view wx:for="{{homeLatestAlbumList}}" wx:for-item="item" wx:for-index="index" wx:key="index" class="six-bar-box-item" hover-class="none" hover-stop-propagation="false">
+                <image class="six-bar-box-item-image" src="{{item.picUrl}}" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+                    
+                </image>
+                <view class="six-bar-box-item-name ellipsisText">{{item.name}}</view>
+                <view class="six-bar-box-item-singer ellipsisText">{{item.artist.name}}</view>
+            </view>
+        </view>
+    </view>
+</view>
+
+<!-- 主播电台 -->
+<view hidden="{{headerType=='recommended'}}" class="station" hover-class="none" hover-stop-propagation="false">
+    <!-- 四个导航 -->
+    <view class="station-fourNav" hover-class="none" hover-stop-propagation="false">
+        <view class="station-fourNav-item" wx:for="{{stationNavList}}" wx:for-item="item" wx:for-index="index" wx:key="index">
+            <view class="station-fourNav-item-icon" hover-class="none" hover-stop-propagation="false">
+                <image class="" src="{{item.src}}" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+                
+                </image>
+            </view>
+            {{item.name}}
+        </view>
+        
+    </view>
+    <!-- 创作|翻唱 -->
+    <view wx:for="{{stationList}}" wx:for-item="item" wx:for-index="index" wx:key="type" class="createCovers six-bar" hover-class="none" hover-stop-propagation="false">
+        <view class="bar-title" hover-class="none" hover-stop-propagation="false">
+            <view class="bar-title-text" hover-class="none" hover-stop-propagation="false">
+                {{item.title}}
+            </view>
+            <view bind:tap="changeItem" data-index='{{index}}' class="bar-title-change" hover-class="none" hover-stop-propagation="false">
+                <image class="bar-title-change-icon" src="../../assets/images/refresh.png"></image>
+                换一换
+            </view>
+        </view>
+        <view class="six-bar-box" hover-class="none" hover-stop-propagation="false">
+            <view wx:for="{{item.homeList}}" wx:for-item="showitem" wx:for-index="showindex" wx:key="id" class="six-bar-box-item" hover-class="none" hover-stop-propagation="false">
+                <image class="six-bar-box-item-image" src="{{showitem.picUrl}}"></image>
+                <view class="six-bar-box-item-name ellipsisText">{{showitem.rcmdtext?showitem.rcmdtext:'-'}}</view>
+                <view class="six-bar-box-item-singer ellipsisText">{{showitem.name}}</view>
+            </view>
+        </view>
+    </view>
+    
+</view>

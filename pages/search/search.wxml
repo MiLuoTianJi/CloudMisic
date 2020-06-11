@@ -1,0 +1,49 @@
+<!-- 输入框 -->
+<view class="search-bar" hover-class="none" hover-stop-propagation="false">
+    <view class="search-bar-inputBox" hover-class="none" hover-stop-propagation="false">
+        <icon class="search-bar-icon" type="search" size="14"></icon>
+        <input value="{{inputValue}}" bindinput="inputFn" bindconfirm="confirmFn" type="text" confirm-type="search" class="search-bar-input" placeholder="{{defaultSearch}}" focus="{{true}}"/>
+    </view>
+</view>
+<!-- 热门搜索 -->
+<view wx:if="{{!isInput && !isSearch}}" class="hot-bar" hover-class="none" hover-stop-propagation="false">
+    <text class="hot-bar-text" selectable="false" space="false" decode="false">热门搜索</text>
+    <view class="hot-bar-label" hover-class="none" hover-stop-propagation="false">
+        <view bindtap="clickSuggestionFn" wx:for="{{hotLabelList}}" data-target="{{item}}" wx:for-item="item" wx:key="index" class="hot-bar-label-item" hover-class="none" hover-stop-propagation="false">
+            {{item}}
+        </view>
+    </view>
+</view>
+<!-- 搜索历史 -->
+<view wx:if="{{!isInput && !isSearch}}" class="history-bar" hover-class="none" hover-stop-propagation="false">
+    <view class="history-bar-title">
+        <text class="history-bar-title-text" selectable="false" space="false" decode="false">搜索历史</text>
+        <image hidden="{{historyList.length==0}}" bind:tap="clearFn" class="history-bar-title-image" src="../../assets/images/clear.png"></image>
+    </view>
+    <view class="history-bar-label" hover-class="none" hover-stop-propagation="false">
+        <view bindtap="clickSuggestionFn" wx:for="{{historyList}}" data-target="{{item}}" wx:for-item="item" wx:key="index" class="history-bar-label-item" hover-class="none" hover-stop-propagation="false">
+            {{item}}
+        </view>
+    </view>
+</view>
+<!-- 搜索建议 -->
+<view wx:if="{{isInput}}" class="suggestions-bar" hover-class="none" hover-stop-propagation="false">
+    <view class="suggestions-bar-list" hover-class="none" hover-stop-propagation="false">
+        <view bindtap="clickSuggestionFn" wx:for="{{suggestionsList}}" data-target="{{item}}" wx:for-item="item" wx:key="index" class="suggestions-bar-list-item" hover-class="none" hover-stop-propagation="false">
+            {{item}}
+        </view>
+    </view>
+</view>
+<!-- 搜索结果 -->
+<view wx:if="{{isSearch}}" class="results-bar" hover-class="none" hover-stop-propagation="false">
+    <view class="results-bar-list" hover-class="none" hover-stop-propagation="false">
+        <view bindtap='goPlayFn' wx:for="{{resultsList}}" data-target="{{item}}" wx:for-item="item" wx:key="index" class="results-bar-list-item" hover-class="none" hover-stop-propagation="false">
+            <view class="results-bar-list-item-name" hover-class="none" hover-stop-propagation="false">
+                {{item.name}}
+            </view>
+            <view class="results-bar-list-item-singer" hover-class="none" hover-stop-propagation="false">
+                {{item.singer}}
+            </view>
+        </view>
+    </view>
+</view>

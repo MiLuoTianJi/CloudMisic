@@ -1,0 +1,49 @@
+{
+  "pages": [
+    "pages/discover/discover",
+    "pages/search/search",
+    "pages/play/play",
+    "pages/mine/mine",
+    "pages/musicList/musicList",
+    "pages/info/info",
+    "pages/secondaryInfo/secondaryInfo",
+    "pages/MV/MV"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#DC4238",
+    "navigationBarTitleText": "云音乐（仿）",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#C62F2F"
+  },
+  "tabBar": {
+    "color": "#333333",
+    "selectedColor": "#d81e06",
+    "list": [
+      {
+        "pagePath": "pages/discover/discover",
+        "text": "发现",
+        "iconPath": "assets/images/discover.png",
+        "selectedIconPath": "assets/images/discover_red.png"
+      },
+      {
+        "pagePath": "pages/play/play",
+        "text": "播放",
+        "iconPath": "assets/images/play.png",
+        "selectedIconPath": "assets/images/play_red.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "用户",
+        "iconPath": "assets/images/person.png",
+        "selectedIconPath": "assets/images/person_red.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "requiredBackgroundModes": [
+    "audio",
+    "location"
+  ]
+}

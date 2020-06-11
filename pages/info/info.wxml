@@ -1,0 +1,70 @@
+<!-- MV -->
+<view hidden="{{infoType!='MV'}}" class="four-bar">
+    <view class="bar-title">
+        <view class="bar-title-text">
+            MV
+        </view>
+    </view>
+    <view class="four-bar-box">
+        <view bind:tap="goToMV" data-id='{{item.id}}' wx:for="{{MVList}}" wx:for-item="item" wx:for-index="index" wx:key="index" class="four-bar-box-item">
+            <image class="four-bar-box-item-image" src="{{item.cover}}"></image>
+            <view class="four-bar-box-item-name ellipsisText">{{item.name}}</view>
+            <view class="four-bar-box-item-singer ellipsisText">{{item.artistName}}</view>
+        </view>
+    </view>
+</view>
+<!-- 歌手排行 -->
+<view hidden="{{infoType!='singer'}}" class="singer-list">
+    <view bindtap="clickItem" data-data='{{item.id}}' wx:for="{{singerList}}" wx:for-item="item" wx:for-index="index" wx:key="index" class="singer-list-item">
+        <view class="singer-list-item-index">{{index+1}}</view>
+        <image class="singer-list-item-image" src="{{item.picUrl}}"></image>
+        <view class="singer-list-item-info">
+            <view class="singer-list-item-info-name">{{item.name}}</view>
+            <view class="singer-list-item-info-hot">{{item.score}}热度</view>
+        </view>
+    </view>
+</view>
+<!-- 歌单 -->
+<view hidden="{{infoType!='songOrder'}}" class="four-bar">
+    <view class="bar-title">
+        <view class="bar-title-text">
+            歌单
+        </view>
+    </view>
+    <view class="four-bar-box">
+        <view bind:tap="clickItem" data-data='{{item.id}}' wx:for="{{songOrderList}}" wx:for-item="item" wx:for-index="index" wx:key="index" class="four-bar-box-item">
+            <image class="four-bar-box-item-image" src="{{item.coverImgUrl}}"></image>
+            <view class="four-bar-box-item-name ellipsisText">{{item.name}}</view>
+            <view class="four-bar-box-item-singer ellipsisText">{{item.creator.nickname}}</view>
+        </view>
+    </view>
+</view>
+<!-- 排行榜 -->
+<view hidden="{{infoType!='ranking'}}" class="ranking">
+    <view bind:tap="clickItem" data-data='{{item.idx}}' wx:for="{{rankingList}}" wx:for-item="item" wx:for-index="index" wx:key="index" class="ranking-item">
+        <view class="ranking-item-left">
+            <image class="ranking-item-left-image" src="{{item.coverImgUrl}}"></image>
+        </view>
+        <view class="ranking-item-right">
+            <view wx:for="{{item.showSongsList}}" wx:for-item="songItem" wx:for-index="songindex" class="ranking-item-right-item">
+                {{songindex+1}}.{{songItem.name}} - {{songItem.singer}}
+            </view>
+        </view>
+    </view>
+</view>
+<!-- 最新音乐 -->
+<view hidden="{{infoType!='newSongs'}}" class="four-bar">
+    <view class="bar-title">
+        <view class="bar-title-text">
+            最新音乐
+        </view>
+    </view>
+    <view class="four-bar-box">
+        <view bind:tap="goToPlay" data-id='{{item.id}}' wx:for="{{newSongsList}}" wx:for-item="item" wx:for-index="index" wx:key="index" class="four-bar-box-item">
+            <image class="four-bar-box-item-image" src="{{item.song.album.picUrl}}"></image>
+            <view class="four-bar-box-item-name ellipsisText">{{item.name}}</view>
+            <view class="four-bar-box-item-singer ellipsisText">{{item.song.artists[0].name}}</view>
+        </view>
+    </view>
+</view>
+    

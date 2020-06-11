@@ -1,0 +1,18 @@
+<view class="MV-box">
+    <video class="MV" src="{{MVdetail.brs['720']}}" play-btn-position='{{center}}'>
+        
+    </video>
+</view>
+<view class="MV-info">
+    <view class="MV-info-name">{{MVdetail.name}}</view>
+    <view class="MV-info-time">
+        <view> 发行:  {{MVdetail.publishTime}}</view>
+        <view>播放次数:  {{MVdetail.playCount}}</view>
+    </view>
+    <view class="MV-info-desc">{{MVdetail.desc}}</view>
+    <view>点赞：{{MVdetail.likeCount}}</view>
+    <view>收藏: {{MVdetail.subCount}}</view>
+    <view>评论: {{MVdetail.commentCount}}</view>
+    <view>分享: {{MVdetail.shareCount}}</view>
+</view>
+

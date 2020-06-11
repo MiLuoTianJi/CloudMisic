@@ -1,0 +1,10 @@
+<view class="music-list" hover-class="none" hover-stop-propagation="false">
+    <view bindtap="goToPlay" data-id='{{item.id}}' wx:for="{{songList}}" wx:for-item="item" wx:for-index="index" wx:key="index" class="music-list-item">
+        <view class="music-list-item-index">{{index+1}}</view>
+        <view class="music-list-item-info">
+            <view class="music-list-item-info-name">{{item.name}}</view>
+            <view class="music-list-item-info-singer">{{item.singer}}</view>
+        </view>
+    </view>
+</view>
+    

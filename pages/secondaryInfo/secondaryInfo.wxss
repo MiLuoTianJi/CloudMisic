@@ -1,0 +1,44 @@
+/* 歌手排行 */
+.music-list{
+    display: flex;
+    flex-flow: column nowrap;
+    padding: 10rpx 30rpx;
+}
+.music-list-item{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100rpx;
+    width: 100%;
+    margin-top: 10rpx;
+    border-bottom: 1px solid #ccc;
+}
+.music-list-item-index{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #9A9A9B;
+    width: 10%;
+    font-size: 35rpx;
+}
+.music-list-item-info{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-around;
+    height: 100%;
+    width: 88%;
+}
+.music-list-item-info-name{
+    font-size: 15px;
+}
+.music-list-item-info-singer{
+    font-size: 11px;
+    color: #9A9A9B;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: break-word;
+    word-break: break-all;
+    
+}

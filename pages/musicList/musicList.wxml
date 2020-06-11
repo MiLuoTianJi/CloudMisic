@@ -1,0 +1,22 @@
+<view class="music-list" hover-class="none" hover-stop-propagation="false">
+    <view bindtap="clickItem" data-id='{{item.id}}' wx:for="{{musicList}}" wx:for-item="item" wx:for-index="index" wx:key="id" class="music-list-item" hover-class="none" hover-stop-propagation="false">
+        <view class="music-list-item-index" hover-class="none" hover-stop-propagation="false">
+            <image hidden="{{!item.isPlay}}" class="music-list-item-index-icon" src="../../assets/images/now_play.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+                
+            </image>
+            <view hidden="{{item.isPlay}}" class="music-list-item-index-text" hover-class="none" hover-stop-propagation="false">
+                {{index+1}}
+            </view>
+        </view>
+        <view class="{{item.isPlay?'music-list-item-info':''}}" hover-class="none" hover-stop-propagation="false">
+            <view class="music-list-item-info-name" hover-class="none" hover-stop-propagation="false">
+                {{item.title}}
+            </view>
+            <view class="music-list-item-info-singer" hover-class="none" hover-stop-propagation="false">
+                {{item.singer}}
+            </view>
+        </view>
+        <image hidden="{{item.isPlay}}" catch:tap="deleteFn" data-index="{{index}}" class="music-list-item-delete" src="../../assets/images/clear.png"></image>
+    </view>
+</view>
+    

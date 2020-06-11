@@ -1,0 +1,143 @@
+.main-bar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: space-between;
+}
+.songInfo{
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+}
+.songInfo-name{
+    font-size: 18px;
+}
+.songInfo-singer{
+    
+}
+.play-bar{
+    position: relative;
+    height: 70%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.play-bar-img{
+    width: 450rpx;
+    height: 450rpx;
+    border-radius: 50%;
+
+}
+.play-bar-img>image{
+    width: 400rpx;
+    height: 400rpx;
+    border-radius: 50%;
+}
+.play-bar-img{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #fff;
+    animation: waterWave 5s linear infinite;
+}
+.play-bar-img-image{
+    border: 3px solid #fff;
+    animation: rotateImg 20s linear infinite;
+}
+.animationPaused{
+    animation-play-state: paused
+}
+@keyframes rotateImg{
+    0%{
+        transform: rotate(0);
+    }
+    100%{
+        transform: rotate(360deg);
+        box-shadow: 0 0 2px #2c2c2c;
+    }
+}
+@keyframes waterWave{
+    0% {
+        width:430rpx;
+        height:430rpx;
+    }
+    50% {
+        width:650rpx;
+        height:650rpx;
+    }  
+    100%{
+        width:430rpx;
+        height:430rpx;
+    }
+}
+.progress-bar{
+    height: 50rpx;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 50rpx;
+}
+.progress-bar-all{
+    position: relative;
+    width: 80%;
+    background: #000;
+    height: 16rpx;
+    border-radius: 10rpx;
+}
+.progress-bar-all-now{
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: #DC4238;
+    height: 16rpx;
+    border-radius: 10rpx;
+    transition: width .05s;
+}
+.progress-bar-all-now-right{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40rpx;
+    height: 40rpx;
+    left: 100%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    background: #fff;
+    border-radius: 50%;
+}
+.progress-bar-all-now-right-center{
+    width: 10rpx;
+    height: 10rpx;
+    background: #DC4238;
+    border-radius: 50%;
+}
+.button-bar{
+    display: flex;
+    width: 100%;
+    height: 15%;
+    justify-content: space-around;
+}
+.button-bar>image{
+    width: 70rpx;
+    height: 70rpx;
+}
+.backgroundPic{
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -999;
+    transform: scale(1.5);
+    filter: blur(20px) brightness(80%);
+}

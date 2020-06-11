@@ -1,0 +1,48 @@
+.music-list{
+    padding: 20rpx 30rpx;
+    overflow-y: auto;
+    display: flex;
+    flex-flow: column nowrap;
+}
+.music-list-item{
+    position: relative;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    padding: 20rpx;
+    padding-right: 80rpx;
+}
+.music-list-item-index{
+    display: flex;
+    align-items: center;
+    margin-right: 40rpx;
+    justify-content: center;
+}
+.music-list-item-index-icon{
+    width: 60rpx;
+    height: 60rpx;
+}
+.music-list-item-index-text{
+
+}
+.music-list-item-info{
+    color: #d81e06;
+}
+.music-list-item-info-name{
+    font-size: 15px;
+    margin-bottom: 15rpx;
+
+}
+.music-list-item-info-singer{
+    font-size: 11px;
+    font-weight: lighter;
+    margin-bottom: 5rpx;
+}
+.music-list-item-delete{
+    position: absolute;
+    top: 50%;
+    right: 20rpx;
+    transform: translateY(-50%);
+    width: 40rpx;
+    height: 40rpx;
+}

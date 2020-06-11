@@ -1,0 +1,31 @@
+.MV-box{
+    width: 100%;
+    height: 500rpx;
+}
+.MV{
+    width: 100%;
+    height: 100%;
+}
+.MV-info{
+    font-size: 22rpx;
+    color: #6A6B6C;
+    padding: 30rpx 20rpx;
+}
+.MV-info>view{
+    margin-bottom: 20rpx;
+}
+.MV-info-name{
+    font-size: 38rpx;
+    color: #000;
+}
+.MV-info-time{
+    display: flex;
+    color: #979798;
+    font-size: 20rpx;
+}
+.MV-info-time>view:first-of-type{
+    margin-right: 50rpx;
+}
+.MV-info-desc{
+    text-indent: 44rpx;
+}

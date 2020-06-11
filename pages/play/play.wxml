@@ -1,0 +1,50 @@
+<view class="main-bar" bind:touchmove="mainBarTouchmoveFn" data="WeChat">
+    <!-- 歌名/歌手 -->
+    <view class="songInfo">
+        <view class="songInfo-name">
+            {{songInfo.title}}
+        </view>
+        <view class="songInfo-singer">
+            {{songInfo.singer}}
+        </view>
+    </view>
+
+    <!-- 播放动画 -->
+    <view class="play-bar" catch:tap="getLiric">
+        <view class="{{isPlay?'play-bar-img':'play-bar-img animationPaused'}}">
+            <image class="{{isPlay?'play-bar-img-image':'play-bar-img-image animationPaused'}}" src="{{songInfo.picUrl}}" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload=""></image>
+        </view>
+    </view>
+    <!-- 进度条 -->
+    <view class="progress-bar">
+        <view class="progress-bar-all" id="progressBar" catch:tap="clickProgressBar" data="WeChat">
+            <view class="progress-bar-all-now" style="width:{{progressBarWidth}}">
+                <view class="progress-bar-all-now-right" id="progressBarAnchor" bind:touchmove="touchmoveFn" data="WeChat">
+                    <view class="progress-bar-all-now-right-center">
+                        
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <!-- 下方按钮 -->
+    <view class="button-bar">
+        <!-- 列表播放 列表循环 单曲循环 随机播放 -->
+        <image wx:for="{{playTypeList}}" wx:for-item="item" wx:for-index="index" wx:key="index" bindtap="playControlFn" data-hanlderName='{{item.hanlderName}}' hidden="{{item.hidden}}" class="{{item.className}}" src="{{item.src}}" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload=""></image>
+        <!-- 上一曲 -->
+        <image bindtap="playControlFn" data-hanlderName="prev" class="button-bar-prev" src="../../assets/images/prev_white.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload=""></image>
+        <!-- 播放 -->
+        <image bindtap="playControlFn" data-hanlderName="play" hidden="{{isPlay}}" class="button-bar-play" src="../../assets/images/play_on_white.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload=""></image>
+        <!-- 暂停 -->
+        <image bindtap="playControlFn" data-hanlderName="pause" hidden="{{!isPlay}}" class="button-bar-pause" src="../../assets/images/pause_white.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload=""></image>
+        <!-- 下一曲 -->
+        <image bindtap="playControlFn" data-hanlderName="next" class="button-bar-next" src="../../assets/images/next_white.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload=""></image>
+        <!-- 列表 -->
+        <image bindtap="playControlFn" data-hanlderName="list" class="button-bar-list" src="../../assets/images/music_list.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload=""></image>
+    </view>
+
+    <!-- 背景图 -->
+    <image class="backgroundPic" src="{{songInfo.picUrl}}" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+        
+    </image>
+</view>

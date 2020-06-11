@@ -1,0 +1,64 @@
+.search-bar{
+    background-color:#DC4238;
+    border: 1px  solid #DC4238;
+    padding: 30rpx;
+}
+.search-bar-inputBox{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    border: 0px solid #DE655C;
+    border-radius: 20rpx;
+    color: #9b9b9b;
+    height: 70rpx;
+}
+.search-bar-input{
+    margin-left: 10rpx;
+}
+.hot-bar,.history-bar,.suggestions-bar,.results-bar{
+    padding: 20rpx;
+}
+.history-bar-title{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.hot-bar-text,.history-bar-title-text{
+    color: #DE655C;
+    font-size: 30rpx;
+    font-weight: 800;
+}
+.history-bar-title-image{
+    width: 40rpx;
+    height: 40rpx;
+}
+.hot-bar-label,.history-bar-label{
+    display: flex;
+    margin-top: 10rpx;
+    flex-flow: row wrap;
+}
+.hot-bar-label-item,.history-bar-label-item{
+    font-size: 14px;
+    color: #DE655C;
+    background-color: #EDEEF0;
+    border-radius: 15rpx;
+    padding: 15rpx;
+    margin: 10rpx;
+}
+.suggestions-bar-list-item,.results-bar-list-item{
+    padding: 20rpx;
+    border-bottom: 1px solid #EDEEF0;
+}
+.results-bar-list-item-name{
+    font-size: 15px;
+    color: #000000;
+    margin-bottom: 15rpx;
+
+}
+.results-bar-list-item-singer{
+    font-size: 11px;
+    color: #000000;
+    font-weight: lighter;
+    margin-bottom: 5rpx;
+}
